@@ -13,8 +13,6 @@ import numpy as np
 import tt
 from sys import stdout
 from collections import Counter
-import tensorflow as tf
-from torch.autograd import Variable as var
 import cvxpy
 import tensorflow as tf
 import scipy.sparse.linalg as splinalg
@@ -56,15 +54,15 @@ def compute_mse(mdl, X, y, print_first_five_results = False, lstm = False, if_tf
             out_dim = y.shape[1]
         pred = mdl(Xtest_temp).detach().numpy().reshape(-1, out_dim)
         y = y.reshape(-1, out_dim)
-        print(pred.shape, y.shape)
+        #print(pred.shape, y.shape)
     else:
         for o in X:
             pred.append(mdl.predict(o))
         pred = np.array(pred)
-    if print_first_five_results == True:
+    #if print_first_five_results == True:
         #print(X[0:5])
-        print(pred[0:1])
-        print(y[0:1])
+        #print(pred[0:1])
+        #print(y[0:1])
 
     return np.mean((pred - y) ** 2)
 
