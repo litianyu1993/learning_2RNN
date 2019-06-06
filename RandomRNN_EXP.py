@@ -244,6 +244,8 @@ if __name__ == '__main__':
                         X.append(tempx)
                         Y.append(tempy)
                     t = tic()
+                    if noise_level == 0.:
+                        TIHT_learning_rate = 0.000001
                     learned_model = learning.TIHT_SGD_torch(X, Y, num_states, length, 0, TIHT_epsilon, TIHT_learning_rate,
                                                       TIHT_max_iters,
                                                       lr2, epo2, b2, tol, alpha=1., lifting=False)
